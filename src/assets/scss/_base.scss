@@ -1,0 +1,1155 @@
+/* I hope you rot in hell if you remove these lines */
+@import 'compass'; 
+//@import 'components/normalize'; 
+// *, *:before, *:after {
+//   -webkit-box-sizing: border-box; 
+//   -moz-box-sizing: border-box; 
+//   box-sizing: border-box;
+// }
+@import 'variables/variables';
+@import 'mixins/mixins';
+//@import 'components/components';
+@import 'components/_fonts.scss';
+
+/* ------------------------------------------------ */
+
+// Base Styles
+//–––––––––––––––––––––––––––––––––––––––––––––––––
+
+::selection {
+  background: #0514A7 !important;
+  color: #FFF;
+}
+::-moz-selection {
+  background: #0514A7;
+  color: #FFF;
+}
+
+* {
+  -webkit-font-smoothing: none;
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+  -webkit-user-select: none;
+  user-select: none;
+  -moz-user-select: none;
+  cursor: default;
+  outline: none;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: $desktop-bg;
+  // Uncomment to get the original "nice" windows 95 wallpaper.
+  // background: $desktop-bg url('../images/original_wallpaper.jpg') no-repeat center;
+  // background-size: 100% 100%, auto;
+  margin: 0;
+  padding: 0;
+  font-family: $font-micross;
+  overflow: hidden;
+  position: fixed !important;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+textarea {
+  font-family: $font-micross;
+  -webkit-user-select: text;
+  user-select: text;
+  -moz-user-select: text;
+  cursor: text;
+}
+
+li {
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+
+.full-width-hack {
+  padding-right: 20px;
+}
+
+#connecting-screen {
+  width: 100%;
+  height:100%;
+  background:#000;
+  z-index: 100;
+  display: block;
+  position: relative;
+
+  #loading-content{
+    text-align: center;
+    padding-top: 30%;
+    p {
+      font-family: 'Courier New';
+      color:  #00ff00;
+      font-size: 15px;
+      font-weight: 400;
+    }
+    ul {
+      list-style: none;
+      text-align: center;
+      display:inline-block;
+      padding: 0;
+      li {
+        background-color:  #00ff00;
+        width: 7px;
+        height: 16px;
+        float: left;
+        margin-right: 15px;
+        margin-top: 8px;
+        transition: all 0.1s ease;
+      }
+      li.active {
+        height: 38px;
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+#taskBar {
+  background: #C3C7CB;
+  min-height: 20px;
+  padding: 3px 0;
+  border-top: 1px solid #FFF;
+  box-shadow: 0 -1px #C3C7CB;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 6;
+
+  #startButton {
+    width: 52px;
+    height: 19px;
+    border-top: 1px solid #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #030303;
+    border-bottom: 1px solid #030303;
+    box-shadow: inset -1px -1px #777777;
+    margin-left: 3px;
+    float: left;
+
+    &[data-open=true] {
+      background: #C3C7CB;
+      border-top: 2px solid #000;
+      border-left: 2px solid #000;
+      border-right: 1px solid #FFF;
+      border-bottom: 1px solid #FFF;
+      box-shadow: none;
+    }
+
+    img {
+      width: 16px;
+      height: auto;
+      margin: 2px 0 0 2px;
+      float: left;
+    }
+
+    span.startButtonText {
+      margin: 1px 0 0 2px;
+      display: inline;
+      float: left;
+      font-size: 18px;
+      font-family: $font-windialog;
+    }
+
+    span.startButtonDotted:active {
+      border: 1px dotted #000;
+      width: 52px;
+      height: 10px;
+    }
+  } // #startButton
+
+  #taskBarItems {
+    margin-left: 62px;
+  }
+
+  .taskBarItem {
+    width: 152px;
+    height: 13px;
+    padding: 2px 3px 3px 3px;
+    background-color: #C3C7CB;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    box-shadow: inset -1px 0 #868A8E, inset 0 -1px #868A8E;
+    margin-left: 3px;
+    float: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .taskBarItem {
+    &:active {
+      border-top: 1px solid #000;
+      border-left: 1px solid #000;
+      border-right: 1px solid #FFF;
+      border-bottom: 1px solid #FFF;
+      box-shadow: inset 1px 0 #868A8E, inset 0 1px #868A8E, inset -1px 0 #C3C7CB, inset 0 -1px #C3C7CB;
+    }
+
+    &[data-status=selected] {
+      background-image: url('../images/ui/taskBarItem.png');
+      border-top: 1px solid #000;
+      border-left: 1px solid #000;
+      border-right: 1px solid #FFF;
+      border-bottom: 1px solid #FFF;
+      box-shadow: inset 1px 0 #868A8E, inset 0 1px #868A8E, inset -1px 0 #C3C7CB, inset 0 -1px #C3C7CB;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    span {
+      margin: 0 0 0 3px;
+      position: relative;
+      bottom: 4px;
+      font-family: $font-windialog;
+      font-size: 18px;
+    }
+
+    &[data-status=selected] span {
+      position: relative;
+      bottom: 3px;
+    }
+
+  } // #taskBarItem
+
+  #clock {
+    width: 61px;
+    height: 19px;
+    border-top: 1px solid #777777;
+    border-left: 1px solid #777777;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    float: right;
+    text-align: center;
+    margin-right: 3px;
+
+    span {
+      font-family: $font-pragmata;
+      font-size: 11px;
+    }
+  } // #clock
+
+} // #taskBar
+
+#startMenu {
+  width: 160px;
+  height: 172px;
+  background: #C3C7CB;
+  box-shadow: 2px 2px 1px #362B2B;
+  border-top: 2px solid #F9F9F9;
+  border-left: 2px solid #F9F9F9;
+  position: absolute;
+  bottom: 31px;
+  z-index: 16;
+  display: none;
+  // padding-bottom: 10px;
+
+  #startMenuLeft {
+    background: #808080;
+    width: 21px;
+    height: 100%;
+    background-image: url('../images/ui/startMenuLeft.png');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    float: left;
+    display: inline;
+  } // #startMenuLeft
+
+  #startMenuRight {
+    float: left;
+    display: inline;
+    list-style: none;
+    width: 137px;
+    padding: 0;
+    margin: 0;
+
+    li {
+      height: 27px;
+      padding: 1px 0 6px 5px;
+      font-size: 11px;
+      margin: 0;
+
+      &:hover {
+        background: #0514A7;
+        color: #FFF !important;
+      }
+
+      img {
+        width: 32px;
+      } 
+
+      a {
+        vertical-align: 13px;
+        margin-left: 5px;
+        display: inline-block;
+      }
+
+      .startMenuArrow {
+        font-size: 8px;
+        text-align: right;
+        float: right;
+        margin: 7px 4px 0 0;
+      }
+
+      ul {
+        color: #000;
+        float: left;
+        display: inline;
+        list-style: none;
+        width: 137px;
+        padding: 0;
+        margin: 0;
+        background: #C3C7CB;
+        box-shadow: 2px 2px 1px #362B2B;
+        border-top: 2px solid #F9F9F9;
+        border-left: 2px solid #F9F9F9;
+        position: absolute;
+
+        li {
+          height: 18px;
+          line-height: 16px;
+          padding: 2px 2px 2px 22px;
+          font-size: 11px;
+          margin: 0;
+
+          &.accessory {
+            background: url(../images/icons/shell32_20.ico) no-repeat;
+            background-size: 16px 16px;
+            background-position: 3px 1px;
+          }
+
+          &.prompt {
+            background: url(../images/icons/ssstars_100.ico) no-repeat;
+            background-size: 16px 16px;
+            background-position: 3px 1px;
+          }
+
+          &.explore {
+            background: url(../images/icons/explorer_101.ico) no-repeat;
+            background-size: 16px 16px;
+            background-position: 3px 1px;
+          }
+
+          &.folder {
+            background: url(../images/icons/shell32_4.ico) no-repeat;
+            background-size: 16px 16px;
+            background-position: 3px 1px;
+          }
+
+          &:hover {
+            background-color: #0514A7;
+            color: #FFF !important;
+          }
+        }
+      }
+    } // li
+
+    hr {
+      margin: 4px 0 3px 0;
+    }
+  } // #startMenuRight
+} // #startMenu
+
+#desktopIcons {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .icon {
+    float: none;
+
+    span {
+      color: #FFF;
+      //background-color: $desktop-bg;
+    }
+  }
+} // #desktopIcons
+
+.icon {
+  width: 80px;
+  height: 60px;
+  padding: 10px;
+  z-index: 1;
+  float: left;
+
+  img {
+    margin: 0 auto;
+    display: block;
+    padding: 0 0 5px 0;
+    width: 32px;
+    height: 32px;
+  }
+
+  span {
+    display: block;
+    border: 1px solid transparent;
+    text-align: center;
+    font-size: 11px;
+    margin: 0 auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  textarea {
+    width: 75px;
+    height: 1em;
+    text-align: center;
+    font-size: 11px;
+    display: none;
+    margin: 0 auto;
+    resize: none;
+    min-height: 1em;
+    color: #000;
+    border: 1px solid #000;
+    padding: 1px 2px;
+    outline: none;
+    overflow: hidden;
+    background: #FFF;
+  }
+
+  &[data-status=selected] img {
+  }
+
+  &[data-status=selected] span {
+    background: #0514A7;
+    border: 1px dotted #FFFF03;
+    color: #FFF;
+  }
+
+  &[data-status=dragging] img {
+    opacity: 0.5;
+  }
+
+  &[data-status=dragging] span {
+    color: #000;
+  }
+
+} // .icon
+
+.window {
+  width: 310px;
+  height: 200px;
+  background: #C3C7CB;
+  margin: 10px;
+  border-top: 1px solid #FFF;
+  border-left: 1px solid #FFF;
+  border-right: 1px solid #7B7F83;
+  border-bottom: 1px solid #7B7F83;
+  box-shadow: 1px 0 #000000, 0 1px #000000, 0 -1px #C3C7CB, -1px 0 #C3C7CB;
+  padding: 2px 3px;
+  position: absolute;
+  z-index: 4;
+  left: 90px;
+  top: 50px;
+  min-width: 200px;
+  min-height: 60px;
+
+  &[data-status=selected] {
+    z-index: 5;
+  }
+
+} // .window
+
+.windowTitleBar {
+  background: #7B7F83;
+  width: 100%;
+  height: 16px;
+  padding: 1px 0;
+  margin: 0;
+  text-align: left;
+
+  img {
+    margin-left: 3px;
+    width: 16px;
+    height: auto;
+    float: left;
+  }
+
+  span {
+    color: #FFF;
+    font-family: $font-windialog;
+    font-size: 17px;
+    position: relative;
+    bottom: 0px;
+    left: 4px;
+    width: 60%;
+    float: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+} // .windowTitleBar
+
+*[data-status=selected] .windowTitleBar {
+  background: #0514A7;
+}
+
+.windowTitleBarButtons {
+  float: right;
+  margin: 0 3px 0 0;
+  position: relative;
+  bottom: 1px;
+
+  div {
+    width: 13px;
+    height: 11px;
+    border-top: 1px solid #FFF;
+    border-left: 1px solid #FFF;
+    border-right: 1px solid #7B7F83;
+    border-bottom: 1px solid #7B7F83;
+    box-shadow: 1px 1px #000;
+    display: inline-block;
+    background-color: #C3C7CB;
+    background-repeat: no-repeat;
+
+    &[data-status=enabled]:active {
+      box-shadow: inset 1px 0 #7B7F83, inset 0 1px #7B7F83;
+      border-top: 1px solid #000;
+      border-left: 1px solid #000;
+      border-right: 1px solid #FFF;
+      border-bottom: 1px solid #FFF;
+      background-position: 1px 1px;
+    }
+  }
+} // .windowTitleBarButtons
+
+.windowTitleBarMinimize {
+  background-image: url('../images/ui/minimize.png');
+}
+
+.windowTitleBarMaximize {
+  background-image: url('../images/ui/maximize.png');
+  margin-left: 1px;
+}
+
+.windowTitleBarClose {
+  background-image: url('../images/ui/close.png');
+  margin-left: 2px;
+
+  &[data-status=disabled] {
+    background-image: url('../images/ui/closeDisabled.png');
+  }
+} // .windowTitleBarClose
+
+.windowMenuBar {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display:block;
+  clear:both;
+
+  li {
+    list-style: none;
+    font-size: 11px;
+    display: inline-block;
+    padding: 2px 3px;
+
+    &[data-open=true] {
+      background: #0514A7;
+
+      a {
+        color: #FFF !important;
+      }
+    }
+  }
+} // .windowMenuBar
+
+.explorer {
+
+  &.video {
+    width: 450px;
+    height: 276px;
+    .explorerContents {
+      overflow: visible;
+    }
+  }
+
+  &.slideshow {
+    width: 450px;
+    height: 340px;
+
+    .explorerContents {
+      height: 309px;
+      overflow: visible;
+
+      .slidecontainer {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        .slide {
+          position: relative;
+          width: 450px;
+          height: 292px;
+          display: block;
+          overflow:hidden;
+          top: 0;
+          //transition: top 0.5s;
+          .image {
+            img {
+              width: 100%;
+            }
+          }
+          .desc {
+            font-family: $font-micross;
+            font-size: 15px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 98%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 5px;
+            margin: 1px;
+          }
+        } // .slide
+      } // .slidecontainer
+      
+    } // .explorerContents
+
+    .explorerStatusBar {
+      .explorerStatusBarLeft {
+        width: 219px;
+        height: 22px;
+        font-size: 17px;
+        
+          &:hover {
+            background-color: #0514A7;
+            color: #fff;
+          }
+        
+      }
+      .explorerStatusBarRight {
+        text-align: right;
+        height: 22px;
+        font-size: 17px;
+        
+          &:hover {
+            background-color: #0514A7;
+            color: #fff;
+          }
+        
+      }
+    }
+  } // .slideshow
+
+  &.internetonline {
+    width: 360px;
+    height: 230px;
+    .explorerContents {
+      overflow: visible;
+      background: #fff  url('../images/iol-bg.jpg') no-repeat center;
+      background-size: 100% 100%, auto;
+      position: relative;
+
+      div {
+        position: absolute;
+
+        &.iol {
+          //top: 28px;
+          top: 12%;
+          left: 40px;
+        }
+
+        &.history {
+          //top: 125px;
+          top: 54%;
+          left: 40px;
+        }
+
+        &.fb {
+          top: 67px;
+          right: 15px;
+         
+        }
+
+        &.tw {
+          top: 130px;
+          right: 15px;
+        }
+      }
+    }
+  } // .internetonline
+
+
+  &.profile {
+    width: 590px;
+    height: 350px;
+    .explorerContents {
+      overflow: visible;
+      background: #fff  url('../images/profile-bg.jpg') no-repeat center;
+      background-size: 100% 100%, auto;
+      position: relative;
+
+      .profilewrap {
+        overflow: hidden;
+        width: 97%;
+        height: 97%;
+        margin: 10px;
+        .title {
+          font-family: Arial;
+          font-weight: bold;
+          font-size: 24px;
+          text-shadow: 1px 1px #000000;
+          margin-bottom: 13px;
+
+          .titleleft {
+            color: #5b5c8f;
+          }
+          .titleright {
+            color: #c8c4e2;
+          }
+        }
+        .card {
+          font-family: Arial;
+          font-size: 12px;
+          border: 1px solid #000;
+          padding: 3px;
+          background: #fff;
+
+          .photo {
+            display: block;
+            float: left;
+          }
+
+          .infomain {
+            margin-top: 26px;
+          }
+
+          .infobottom {
+            margin-top: 20px;
+          }
+
+          table {
+            th {
+              font-weight: bold;
+              text-align: left;
+              width: 100px;
+              vertical-align: top;
+            }
+            td {
+              text-align: left;
+              max-width: 245px;
+              vertical-align: top;
+            }
+          }
+        } //.card
+
+        .foot {
+          margin: 10px 0px 10px 5px;
+          .iollogo {
+            display: inline-block;
+            float: left;
+          }
+          .addlogo {
+            display: inline-block;
+            float: right;
+          }
+        }
+
+      }
+    }
+  }
+
+  &.gifs {
+    max-width: 75%;
+    max-height: 75%;
+    height: 600px;
+    width: 1235px;
+    text-align: center;
+    overflow:hidden;
+    .explorerContents {
+      overflow: visible;
+      .danceline {
+        width:948px;
+        margin: 0 auto;
+        overflow:hidden;
+      }
+    }
+  }// .gifs
+
+  &.history {
+    max-width: 75%;
+    max-height: 75%;
+    height: 250px;
+    width: 500px;
+    
+    .explorerContents {
+      font-family: $font-pragmata;
+      font-size: 12px;
+      ul {
+        list-style-type: none;
+        text-align: left;
+        padding: 5px;
+        margin: 0px;
+
+        li {
+          &:hover {
+            background-color: #0514A7;
+            color: #fff;
+          }
+        }
+      }
+    }
+    #scrollbox1 {
+        overflow: auto;
+        height: 360px;
+        padding: 0 5px;
+        border: 1px solid #b7b7b7;
+    }
+
+    .scroll-up1,
+    .scroll-down1 {
+        width: 17px;
+        height: 17px;
+    }
+
+    .scroll-up1 {
+        background: url('../images/xp-vert-btns.png') no-repeat;
+    }
+    .scroll-up1:hover {
+        background-position: -17px 0;
+    }
+
+    .scroll-down1 {
+        background: url('../images/xp-vert-btns.png') no-repeat 0 -17px;
+    }
+    .scroll-down1:hover {
+        background-position: -17px -17px;
+    }
+
+    .track1 {
+        width: 16px;
+        background-color: #f7f7f3;
+        border-left: 1px solid #f2f0ea;
+    }
+
+    .handle1 {
+        width: 17px;
+        margin-left: -1px;
+        background: url('../images/xp-vert-handle.png') no-repeat 0 center;
+    }
+    .handle1:hover {
+        background-position: -17px center;
+    }
+
+    .handle1 .top,
+    .handle1 .bottom {
+        position: absolute;
+        left: 0;
+        width: 17px;
+        height: 10px;
+        background: url('../images/xp-vert-handle.png') no-repeat;
+    }
+
+    .handle1 .top {
+        top: 0;
+    }
+    .handle1:hover .top {
+        background-position: -17px 0;
+    }
+
+    .handle1 .bottom {
+        bottom: 0;
+        width: 17px;
+        height: 10px;
+        background-position: 0 bottom;
+    }
+    .handle1:hover .bottom {
+        background-position: -17px bottom;
+    }
+  }// .history
+
+  &.photo {
+    width: 450px;
+    height: 350px;
+    .explorerContents {
+      overflow: visible;
+      div {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  } // .photo
+
+  .explorerContents {
+    background: #FFF;
+    box-shadow: inset 1px 0 #000, inset 0 1px #000, 1px 0 #FFF, 0 1px #FFF;
+    border-top: 1px solid #7B7F83;
+    border-left: 1px solid #7B7F83;
+    border-right: 1px solid #C3C7CB;
+    border-bottom: 1px solid #C3C7CB;
+    overflow: hidden;
+  }
+
+
+
+  .explorerStatusBar {
+    height: 13px;
+    padding: 3px 0 1px 0;
+    width: 100%;
+    font-size: 11px;
+
+    span {
+      display:block;
+      margin: 2px 3px 2px 3px;
+    }
+  }
+
+  .explorerStatusBarLeft {
+    width: 142px;
+    height: 15px;
+    background: #C3C7CB;
+    border-top: 1px solid #7B7F83;
+    border-left: 1px solid #7B7F83;
+    border-right: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
+    float: left;
+  }
+
+  .explorerStatusBarRight {
+    width: 200px;
+    float: left;
+    margin-left: 2px;
+    height: 15px;
+    background: #C3C7CB;
+    border-top: 1px solid #7B7F83;
+    border-left: 1px solid #7B7F83;
+    border-right: 1px solid #FFF;
+    border-bottom: 1px solid #FFF;
+  }
+} // .explorer
+
+.dialogBox {
+  text-align: center;
+
+  .dialogBoxContents {
+    min-height: 60px;
+    display: block;
+    clear:both;
+
+    img {
+      margin: 12px 0 12px 12px;
+      float: left;
+    }
+
+    span {
+      font-size: 11px;
+      margin: 21px 9px 0 9px;
+      display: block;
+      text-align: center;
+      float: left;
+      width: 75%;
+    }
+  } // .dialogBoxContents
+
+  .dialogBoxButtons {
+    display: inline-block;
+    margin: 0 auto;
+
+    div {
+      min-width: 69px;
+      height: 18px;
+      font-size: 11px;
+      background: #C3C7CB;
+      box-shadow: inset -1px 0 #757575, 0 0 0 1px #000, 1px 0 #000;
+      border-top: 1px solid #FFF;
+      border-left: 1px solid #FFF;
+      border-right: 1px solid #000;
+      border-bottom: 1px solid #000;
+      text-align: center;
+      display: inline-block;
+      margin-right: 8px;
+
+      &:active {
+        box-shadow: 0 0 0 1px #000;
+        border: 1px solid #7B7F83;
+        position: relative;
+        top: 2px;
+
+        span {
+          border: 1px dotted #000;
+          margin: 3px auto 0 auto;
+          position: relative;
+          left: 1px;
+        }
+      }
+
+      span {
+        /*border: 1px dotted #000;*/
+        width: 90%;
+        display: block;
+        margin: 2px auto 0 auto;
+      }
+    }
+  } // .dialogBoxButtons
+} // .dialogBox
+
+// Context Menu
+.context-menu {
+  font-family: $font-micross;
+  font-size: 11px;
+  line-height: 17px;
+  display: none;
+  z-index: 1000;
+  position: absolute;
+  overflow: hidden;
+  background: #C3C7CB;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #7b7f83;
+  border-bottom: 1px solid #7b7f83;
+  box-shadow: 1px 0 #000, 0 1px #000, 0 -1px #C3C7CB, -1px 0 #C3C7CB;
+  padding: 0;
+  min-width: 170px;
+
+  li {
+    margin: 1px;
+    padding: 0px 17px;
+    cursor: pointer;
+    list-style-type: none;
+    color: #000;
+
+    &:hover {
+      font-family: 'WINDialog';
+      font-size: 17px;
+      background-color: #0514A7;
+      color: #fff;
+      cursor: default;
+    }
+  }
+} // .custom-menu
+
+@include mq-max-width(640){
+  .desktop { 
+    display:none;
+  }
+}
+
+// JQuery UI
+//–––––––––––––––––––––––––––––––––––––––––––––––––
+
+.ui-resizable { position: relative;}
+.ui-resizable-handle { position: absolute;font-size: 0.1px; display: block; }
+.ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle { display: none; }
+.ui-resizable-n { cursor: n-resize; height: 7px; width: 100%; top: -5px; left: 0; }
+.ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0; }
+.ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0; height: 100%; }
+.ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0; height: 100%; }
+.ui-resizable-se { cursor: se-resize; width: 12px; height: 12px; right: 1px; bottom: 1px; }
+.ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
+.ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
+.ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}
+
+
+@media screen and (max-width: 640px) {
+  .explorer, 
+  .explorer.video, 
+  .explorer.internetonline, 
+  .explorer.history
+  {
+    width: 300px;
+    height: 215px;
+  }
+
+  .explorer.photo {
+    width: 300px;
+    height: 320px;
+  }
+
+  .explorer.profile {
+    width: 300px;
+    height: 360px;
+    .explorerContents {
+      .profilewrap {
+        .card {
+          .infomain {
+            margin-top: 0;
+          }
+          .infobottom {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+    
+  }
+  #taskBar {
+    max-width: 100%;
+    max-height: 20px;
+    .taskBarItem {
+      width:14%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      span {
+        // display:none;
+      }
+    }
+  }
+
+  .explorer.gifs {
+    width: 300px;
+    height: 350px;
+    .explorerContents {
+      .danceline {
+        width: 100%;
+        height: 60px;
+        margin-top:-33px;
+        margin-left:-18px;
+        img {
+          transform: scale(0.25);
+        }
+      }
+      img#happyholidaysgif {
+        //transform: scale(0.25);
+        width: 238px;
+        height: auto;
+      }
+      span {
+        display:inline-block;
+        width: 20px;
+        height: 24px;
+
+        //transform: scale(0.25);
+        //height: 25%;
+      }
+    }
+  }
+
+  .explorer.slideshow {
+    width: 300px;
+    height: 295px;
+    .explorerContents {
+      .slidecontainer {
+        .slide {
+          width: 298px;
+          height: 250px;
+        }
+      }
+    }
+  }
+}

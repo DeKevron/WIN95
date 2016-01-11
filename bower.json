@@ -1,0 +1,29 @@
+{
+  "name": "win95sim",
+  "version": "1.0.0",
+  "authors": [
+    "kev@dekevron.com"
+  ],
+  "description": "Windows 95 Simulator",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.*",
+    "jquery-ui": "latest",
+    "jquery-elastic": "https://github.com/janjarfalk/jquery-elastic.git#~1.6.10",
+    "mustache": "latest",
+    "jquery-ui-touch-punch": "latest",
+    "modernizr": "~2.*"
+  }
+}
+

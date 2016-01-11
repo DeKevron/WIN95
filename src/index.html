@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html language="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Remote Windows Desktop</title>
+
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="
+			user-scalable=no, initial-scale=1,
+			maximum-scale=1, minimum-scale=1,
+			width=device-width, height=device-height"
+		/>
+
+		<link rel="icon" type="image/ico" href="assets/images/icons-png/iol-globe.png" />
+        <link rel="stylesheet" href="assets/css/style.css">
+
+    </head>
+    <body id="desktop">
+    	<div id="connecting-screen">
+    		<div id="loading-content">
+    			<p>For the best experience, please update your browser to the latest version...</p>
+    			<ul>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar desktop"></li>
+    				<li class="loadbar"></li>
+    				<li class="loadbar"></li>
+    				<li class="loadbar"></li>
+    				<li class="loadbar"></li>
+    				<li class="loadbar"></li>
+    				<li class="loadbar"></li>
+    				<li class="loadbar"></li>
+    				<li class="loadbar"></li>
+    			</ul>
+    		</div>
+    	</div>
+		<div id="desktopIcons"></div>
+		<div id="startMenu">
+			<div id="startMenuLeft"></div>
+			<ul id="startMenuRight">
+
+				<li data-start-menu="documents">
+					<img src="assets/images/icons-png/shell32_21.png" alt="" />
+					<a href="#"><u>D</u>ocuments</a>
+					<span class="startMenuArrow">&#x25b6;</span>
+					<ul>
+						<li class="folder" id="slideshowExample">Example Slideshow</li>
+					</ul>
+				</li>
+				<li data-start-menu="profile" id="myProfile">
+					<img src="assets/images/icons-png/profile.png" alt="" />
+					<a href="#"><u>M</u>y profile</a>
+				</li> 
+				<li data-start-menu="music" id="myMusic">
+					<img src="assets/images/icons-png/mmsys_117.png" alt="" />
+					<a href="#"><u>M</u>usic</a>
+				</li> 
+				<li data-start-menu="gifs"  id="gifs">
+					<img src="assets/images/icons-png/gifs.png" alt="" />
+					<a href="#"><u>G</u>ifs</a>
+				</li> 
+				<li data-start-menu="run">
+					<img src="assets/images/icons-png/shell32_25.png" alt="" />
+					<a href="#"><u>R</u>un...</a>
+				</li>
+				<!-- <hr />
+				<li data-start-menu="shutDown">
+					<img src="assets/images/icons-png/shell32_28.png" alt="" />
+					<a href="#">Sh<u>u</u>t Down...</a>
+				</li> -->
+			</ul>
+		</div>
+		<div id="taskBar">
+			<div id="startButton" data-open="false">
+				<span class="startButtonDotted">
+					<img src="assets/images/icons-png/shell32_40.png" alt="" />
+					<span class="startButtonText">Start</span>
+				</span>
+			</div>
+			<div id="taskBarItems">
+			</div>
+			<div id="clock">
+				<span></span>
+			</div>
+		</div>
+
+		<ul class="context-menu desktop">
+		  <li data-action="open"><u>O</u>pen</li>
+		  <li data-action="explore"><u>E</u>xplore</li>
+		  <li data-action="findcomputer"><u>F</u>ind Computer...</li>
+		</ul>
+
+        
+        
+		<!-- build:js assets/js/app.js -->
+		<script src="bower/modernizr/modernizr.js"></script>
+
+		<script src="bower/jquery/dist/jquery.js"></script>
+		<script src="bower/jquery-ui/jquery-ui.js"></script>
+		<script src="bower/jquery-elastic/jquery.elastic.source.js"></script>
+		<script src="bower/mustache/mustache.js"></script>
+		<script src="bower/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+		<script src="assets/js/win95.js"></script>
+		<script src="assets/js/templates.js"></script>
+
+		<script src="assets/js/sys/icon.js"></script>
+		<script src="assets/js/sys/explorer.js"></script>
+		<script src="assets/js/sys/dialogbox.js"></script>
+		<script src="assets/js/sys/video.js"></script>
+		<script src="assets/js/sys/slideshow.js"></script>
+		<script src="assets/js/sys/internetonline.js"></script>
+		<script src="assets/js/sys/gifs.js"></script>
+		<script src="assets/js/sys/photo.js"></script>
+		<script src="assets/js/sys/history.js"></script>
+		<script src="assets/js/sys/profile.js"></script>
+		<script src="assets/js/enscroll-0.6.1.min.js"></script>
+		
+		<script src="assets/js/defaults.js"></script>
+		<script src="assets/js/app.js"></script>
+		<!-- endbuild -->
+
+    </body>
+</html>
