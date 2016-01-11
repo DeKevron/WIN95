@@ -260,7 +260,7 @@ gulp.task('build:scss', function() {
 // This runs all the tasks for production.
 gulp.task('build:app', ['html', 'images', 'svg', 'build:js', 'build:scss', 'build:modernizr'], function () {
    
-    var assets = useref.assets();
+    //var assets = useref();
     
     // Copy over the .htaccess file to the app folder
     gulp.src("./src/.htaccess")
@@ -296,10 +296,10 @@ gulp.task('build:app', ['html', 'images', 'svg', 'build:js', 'build:scss', 'buil
     // This reads your included scripts on your html page, concats them and minifies them into one file.
     return gulp.src(['./src/*.html'])
     	.pipe(plumber({errorHandler: onError}))
-	    .pipe(assets)
+	    //.pipe(assets)
 	    .pipe(sourcemaps.init())
 		    .pipe( gulpif('*.js', uglify() ))
-		    .pipe(assets.restore())
+		    //.pipe(assets.restore())
 		    .pipe(useref())
 	    .pipe(sourcemaps.write('./'))
 	    .on('error', notify.onError(function( err ){ 
